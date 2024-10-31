@@ -1,5 +1,7 @@
 library(ggplot2)
 
+#N_t = (N_{t-1} - c_{t-1}) + r_t * (N_{t-1} - c_{t-1}) * [1 - (N_{t-1} - c_{t-1})/K_t]
+
 # parameter setting
 alpha_0 <- 0.1  # Growth rate model
 alpha_1 <- 0.05 
