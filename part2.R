@@ -25,8 +25,8 @@ N_removal_after_growth <- function(years, N0, R, alpha_0, alpha_1, beta_0, beta_
   N[1] <- N0
   
   for (t in 2:years) {
-    rt <- exp(alpha_0 + alpha_1 * R[t - 1])
-    Kt <- exp(beta_0 + beta_1 * R[t - 1])
+    rt <- exp(alpha_0 + alpha_1 * R[t])
+    Kt <- exp(beta_0 + beta_1 * R[t])
     N[t] <- (N[t-1] + rt * N[t-1] * (1 - N[t-1] / Kt)) - c[t-1]
     N[t] <- max(N[t], 0) # keep positive
   } 
@@ -39,8 +39,8 @@ N_removal_before_growth <- function(years, N0, R, alpha_0, alpha_1, beta_0, beta
   N[1] <- N0
   
   for (t in 2:years) {
-    rt <- exp(alpha_0 + alpha_1 * R[t - 1])
-    Kt <- exp(beta_0 + beta_1 * R[t - 1])
+    rt <- exp(alpha_0 + alpha_1 * R[t])
+    Kt <- exp(beta_0 + beta_1 * R[t])
     N[t] <- (N[t-1] - c[t-1]) + rt * (N[t-1] - c[t-1]) * (1 - (N[t-1] - c[t-1]) / Kt)
     N[t] <- max(N[t], 0) # keep positive
   }
